@@ -14,8 +14,9 @@ public class Player {
 	}
 
 	public String toString(){
-		System.out.println("Player name: "+this.name);
-		System.out.println("Points scored: "+this.points);
+		String printed=("Player name: "+this.name);
+		printed+=("Points scored: "+this.points);
+		return printed;
 	}
 
 }
