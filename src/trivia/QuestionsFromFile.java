@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class QuestionsFromFile {
+	static Question[] allQuestions;
 
 	public QuestionsFromFile() {
 		// TODO Auto-generated constructor stub
@@ -15,27 +16,34 @@ public class QuestionsFromFile {
 		Scanner scan=new Scanner(file);
 		int numQuestions=0;
 		while(scan.hasNextLine()){
-			System.out.println(scan.nextLine());
+			scan.nextLine();
 			numQuestions++;
 		}
 		numQuestions/=5; //every 5 lines is a new question
-		Question[] allQuestions= new Question[numQuestions];
-		int tempLineOn=1;
-		int tempQuestionOn=1;
+		readInQuestions(file, numQuestions);
+		
+	}
+	
+	public static void readInQuestions(File file, int numQuestions) throws FileNotFoundException{
+		Scanner scan=new Scanner(file);
+		allQuestions= new Question[numQuestions];
+		int tempLineOn=0;
+		int tempQuestionOn=0;
 		String[] temp= new String[5];
 		while(scan.hasNextLine()){
-			System.out.println("in while");
+			//System.out.println("tempQuestionOn= " + tempQuestionOn);
+			//System.out.println("tempLineOn= " + tempLineOn);
 			temp[tempLineOn]=scan.nextLine();
 			tempLineOn++;
 			if(tempLineOn==5){
 				allQuestions[tempQuestionOn]=new Question(temp);
 				tempQuestionOn++;
-				if(tempQuestionOn==numQuestions){
-					break;
-				}
-				tempLineOn=1;
-				temp= new String[5];
+				tempLineOn=0;
 			}
+			if(tempQuestionOn==numQuestions){
+				break;
+			}
+			
 		}
 		for(int i=0; i<numQuestions; i++){
 			System.out.print(allQuestions[i]);
