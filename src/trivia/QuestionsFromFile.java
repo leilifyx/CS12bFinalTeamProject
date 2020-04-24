@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
 
+//questions.txt taken from https://www.funtrivia.com/playquiz/quiz37732454be8.html
 
 public class QuestionsFromFile {
 	static Question[] allQuestions; 
