@@ -2,10 +2,18 @@ package trivia;
 import java.util.ArrayList;
 
 
+
+
 public class Question {
-	ArrayList<String> question;
+	ArrayList<String> question; 
 	
-	
+	/*this class' constructor creates a ArrayList question 
+	 * which takes in an array of Strings as a parameter
+	 * 
+	 * for question, question[0] will always be the actual question
+	 * question[1] will always be the right answer
+	 * the following will be wrong answers
+	 */	
 	public Question(String[] values) {
 		this.question = new ArrayList<String>();
 		for (int i=0; i<values.length; i++) {

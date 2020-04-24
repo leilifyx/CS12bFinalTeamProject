@@ -2,14 +2,14 @@ package trivia;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
-import java.util.ArrayList;
+
 
 public class QuestionsFromFile {
-	static Question[] allQuestions;
+	static Question[] allQuestions; 
 
-	public QuestionsFromFile() {
+	public QuestionsFromFile(File file) throws FileNotFoundException{
 		// TODO Auto-generated constructor stub
-		
+		readFile(file);
 	}
 	
 	public static void readFile(File file) throws FileNotFoundException{
