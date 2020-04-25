@@ -30,11 +30,11 @@ public class RunTrivia {
 		return players;
 	}
 	
-	public static void getQuestions(){
+	public static void getQuestions() throws FileNotFoundException{
 		System.out.println("\n\nWould you like to:\n1 - use our questions\n2 - enter your own questions");
 		int answer=scan.nextInt();
 		if(answer==1){
-			System.out.println("QuestionsFromFile()");
+			getSetQuestions();
 		}
 		else if (answer==2){
 			getQuestionsFromInput();
@@ -70,6 +70,54 @@ public class RunTrivia {
 	    	allQuestions[tracker]=tempQuestion;
 	    	tracker++;
 	    }
+	}
+	
+	public static void getSetQuestions() throws FileNotFoundException{
+		String blank=scan.nextLine();
+		System.out.println("enter file's name");
+		String fileName=scan.nextLine();
+		File file= new File(fileName);
+		readFile(file);
+	}
+	
+	public static void readFile(File file) throws FileNotFoundException{
+		
+		Scanner scanFile=new Scanner(file);
+		int numQuestions=0;
+		while(scanFile.hasNextLine()){
+			scanFile.nextLine();
+			numQuestions++;
+		}
+		numQuestions/=5; //every 5 lines is a new question
+		//System.out.println(numQuestions);
+		readInQuestions(file, numQuestions);
+		
+	}
+	
+	public static void readInQuestions(File file, int numQuestions) throws FileNotFoundException{
+		Scanner scanFile=new Scanner(file);
+		allQuestions= new Question[numQuestions];
+		int tempLineOn=0;
+		int tempQuestionOn=0;
+		String[] temp= new String[5];
+		while(scanFile.hasNextLine()){
+			//System.out.println("tempQuestionOn= " + tempQuestionOn);
+			//System.out.println("tempLineOn= " + tempLineOn);
+			temp[tempLineOn]=scanFile.nextLine();
+			tempLineOn++;
+			if(tempLineOn==5){
+				allQuestions[tempQuestionOn]=new Question(temp);
+				tempQuestionOn++;
+				tempLineOn=0;
+			}
+			if(tempQuestionOn==numQuestions){
+				break;
+			}
+			
+		}
+		/*for(int i=0; i<numQuestions; i++){
+			System.out.print(allQuestions[i]);
+		}*/
 	}
 	
 	public static void noPeeking(){
