@@ -1,4 +1,4 @@
-package trivia;
+/*package trivia;
 import java.util.Scanner;
 
 public class QuestionInput.java{
@@ -32,3 +32,4 @@ public class QuestionInput.java{
     }
   }
 }
+*/
