@@ -1,4 +1,4 @@
-package trivia;
+/*package trivia;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
@@ -63,3 +63,4 @@ public class QuestionsFromFile {
 	}
 
 }
+*/

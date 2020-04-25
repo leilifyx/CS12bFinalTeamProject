@@ -10,7 +10,7 @@ public class RunTrivia {
 	int numRound=0;
 	int numQuestions=0;
 	static Question[] allQuestions; 
-	
+	Scoreboard scoreboard;
 
 	public RunTrivia() {
 		// TODO Auto-generated constructor stub
@@ -148,7 +148,7 @@ public class RunTrivia {
 		}
 		*/
 		getQuestions();
-		//Scoreboard scoreboard=new Scoreboard(players);
+		//scoreboard=new Scoreboard(players);
 		//noPeeking();
 		
 		for(int i=0; i<allQuestions.length; i++){
