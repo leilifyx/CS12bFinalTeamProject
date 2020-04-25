@@ -48,6 +48,10 @@ public class Question {
 	public String getQuesAtLoc(int loc){
 		return question.get(loc);
 	}
+	
+	public void addToEnd(String string){
+		question.add(string);
+	}
 
 	public boolean equals(Question question2){
 		boolean isEqual=true;

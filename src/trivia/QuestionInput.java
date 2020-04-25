@@ -1,7 +1,7 @@
 /*package trivia;
 import java.util.Scanner;
 
-public class QuestionInput.java{
+public class QuestionInput{
 
   public QuestionInput(){};
 
