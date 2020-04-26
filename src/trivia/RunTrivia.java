@@ -9,15 +9,15 @@ public class RunTrivia {
 	static Player[] players;
 	int numRound=0;
 	int numQuestions=0;
-	static Question[] allQuestions; 
+	static Question[] allQuestions;
 	static Scoreboard scoreboard;
 
 	public RunTrivia() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static Player[] getPlayers(){
-		
+
 		System.out.println("How many people are playing");
 		int numPlaying=scan.nextInt();
 		String blank=scan.nextLine(); //was scanning in extra line
@@ -29,7 +29,7 @@ public class RunTrivia {
 		}
 		return players;
 	}
-	
+
 	public static void getQuestions() throws FileNotFoundException{
 		System.out.println("\n\nWould you like to:\n1 - use our questions\n2 - enter your own questions");
 		int answer=scan.nextInt();
@@ -43,9 +43,9 @@ public class RunTrivia {
 			System.out.println("invalid answer");
 			getQuestions();
 		}
-	
+
 	}
-	
+
 	public static void getQuestionsFromInput(){
 	    Scanner in=new Scanner(System.in);
 	    System.out.println("How many questions do you want?");
@@ -71,7 +71,7 @@ public class RunTrivia {
 	    	tracker++;
 	    }
 	}
-	
+
 	public static void getSetQuestions() throws FileNotFoundException{
 		String blank=scan.nextLine();
 		System.out.println("enter file's name");
@@ -79,9 +79,9 @@ public class RunTrivia {
 		File file= new File(fileName);
 		readFile(file);
 	}
-	
+
 	public static void readFile(File file) throws FileNotFoundException{
-		
+
 		Scanner scanFile=new Scanner(file);
 		int numQuestions=0;
 		while(scanFile.hasNextLine()){
@@ -91,9 +91,9 @@ public class RunTrivia {
 		numQuestions/=5; //every 5 lines is a new question
 		//System.out.println(numQuestions);
 		readInQuestions(file, numQuestions);
-		
+
 	}
-	
+
 	public static void readInQuestions(File file, int numQuestions) throws FileNotFoundException{
 		Scanner scanFile=new Scanner(file);
 		allQuestions= new Question[numQuestions];
@@ -113,34 +113,33 @@ public class RunTrivia {
 			if(tempQuestionOn==numQuestions){
 				break;
 			}
-			
+
 		}
 		/*for(int i=0; i<numQuestions; i++){
 			System.out.print(allQuestions[i]);
 		}*/
 	}
-	
+
 	public static void noPeeking(){
 		String stars="* * * * * * * * * * * * * * * * * * * * * * * * * ";
 		for(int i=0; i<50; i++){
 			System.out.println(stars+stars);
 		}
 	}
-	
+
 	public void tick() {
 		numRound++;
 		System.out.println("\nRound " + numRound); //prints what Round is on
-		
+
+	}
+
+	public static void updatePoints(String answer, Question question, Player player){
+		if(answer.equals(question.get(1))){
+			player.points++;
+		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static void main(String[] args) throws FileNotFoundException{
 		//getPlayers();
 		/*for(int i=0; i<players.length; i++){
@@ -151,7 +150,7 @@ public class RunTrivia {
 		//scoreboard=new Scoreboard(players);
 		noPeeking();
 		//System.out.print(scoreboard.toString());
-		
+
 		/*for(int i=0; i<allQuestions.length; i++){
 			System.out.print("\n"+allQuestions[i]);
 		}*/
