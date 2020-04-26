@@ -10,7 +10,7 @@ public class RunTrivia {
 	int numRound=0;
 	int numQuestions=0;
 	static Question[] allQuestions; 
-	Scoreboard scoreboard;
+	static Scoreboard scoreboard;
 
 	public RunTrivia() {
 		// TODO Auto-generated constructor stub
@@ -142,18 +142,18 @@ public class RunTrivia {
 	
 	
 	public static void main(String[] args) throws FileNotFoundException{
-		//getPlayers();
+		getPlayers();
 		/*for(int i=0; i<players.length; i++){
 			System.out.print(players[i]);
 		}
 		*/
-		getQuestions();
-		//scoreboard=new Scoreboard(players);
+		//getQuestions();
+		scoreboard=new Scoreboard(players);
 		//noPeeking();
+		System.out.print(scoreboard.toString());
 		
-		for(int i=0; i<allQuestions.length; i++){
+		/*for(int i=0; i<allQuestions.length; i++){
 			System.out.print("\n"+allQuestions[i]);
+		}*/
 	}
-
-}
 }
