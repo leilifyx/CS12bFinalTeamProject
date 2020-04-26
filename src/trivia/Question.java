@@ -1,5 +1,6 @@
 package trivia;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 
@@ -48,6 +49,22 @@ public class Question {
 	public String getQuesAtLoc(int loc){
 		return question.get(loc);
 	}
+	
+	public void shuffleAnswers(Question question2){
+		String[] getQues=new String[1];
+		getQues[0]=question2.getQuesAtLoc(0);
+		Question tempQuestion2= new Question(getQues);
+		Random rand= new Random();
+		int numAnswers=question.size()-1;
+		while(numAnswers>0){
+			int random= rand.nextInt(numAnswers);
+			String temp= question2.getQuesAtLoc(random);
+			tempQuestion2.addToEnd(temp);
+			numAnswers--;
+		}
+		question2=tempQuestion2;
+	}
+
 	
 	public void addToEnd(String string){
 		question.add(string);

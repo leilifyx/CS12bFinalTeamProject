@@ -133,11 +133,13 @@ public class RunTrivia {
 
 	}
 
-	public static void updatePoints(String answer, Question question, Player player){
+	/*public static void updatePoints(String answer, Question question, Player player){
 		if(answer.equals(question.get(1))){
 			player.points++;
 		}
-	}
+	}*/
+	
+	
 	
 
 	public static void main(String[] args) throws FileNotFoundException{
