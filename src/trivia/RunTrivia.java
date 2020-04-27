@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class RunTrivia {
 	static Scanner scan=new Scanner(System.in);
 	static Player[] players;
-	int numRound=0;
+	static int numRound=0;
 	int numQuestions=0;
 	static Question[] allQuestions;
 	static Scoreboard scoreboard;
@@ -127,11 +127,57 @@ public class RunTrivia {
 		}
 	}
 
-	public void tick() {
+	public static void tick() {
+		
+		System.out.println("\nRound " + (numRound+1)); //prints what Round is on
+		Question toAsk=askQuestion();
+		System.out.println(readyToAsk(toAsk));
+		int[] answers= getEachPersonsAnswer();
+		checkAnswers(toAsk, answers);
+		scoreboard=new Scoreboard(players);
+		System.out.println(scoreboard);
 		numRound++;
-		System.out.println("\nRound " + numRound); //prints what Round is on
-
 	}
+	
+	
+	public static Question askQuestion(){
+		String[] tempQuess= new String[allQuestions[numRound].getSize()];
+		for(int i=0; i<tempQuess.length; i++){
+			tempQuess[i]=allQuestions[numRound].getQuesAtLoc(i);
+		}
+		Question theQuestion= new Question(tempQuess);
+		return theQuestion.shuffleAnswers(theQuestion);	
+	}
+	
+	public static String readyToAsk(Question questioning){
+		String toAsk="\n"+questioning.getQuesAtLoc(0)+"\n";
+		for(int i=1; i<(questioning.getSize()); i++){
+			toAsk+=((i)+ " - " + questioning.getQuesAtLoc(i)+ "\n");
+		}
+		return toAsk;
+	}
+	
+	public static int[] getEachPersonsAnswer(){
+		int[] theirAnswers= new int[players.length];
+		for(int i=0; i<players.length; i++){
+			System.out.println(players[i].getName()+", what is your answer?");
+			theirAnswers[i]=scan.nextInt();
+		}
+		return theirAnswers;
+		
+	}
+	
+	public static void checkAnswers(Question asked, int[] answers){
+		System.out.println("\nThe correct answer is:\n\t"+(allQuestions[numRound].getQuesAtLoc(1)));
+		for(int i=0; i<answers.length; i++){
+			int tempAnswer=answers[i];
+			if(tempAnswer<=asked.getSize() && asked.getQuesAtLoc(tempAnswer).equals(allQuestions[numRound].getQuesAtLoc(1))){
+				players[i].increasePoints();
+			}
+		}
+	}
+	
+	
 
 	/*public static void updatePoints(String answer, Question question, Player player){
 		if(answer.equals(question.get(1))){
@@ -143,18 +189,21 @@ public class RunTrivia {
 	
 
 	public static void main(String[] args) throws FileNotFoundException{
-		//getPlayers();
+		getPlayers();
 		/*for(int i=0; i<players.length; i++){
 			System.out.print(players[i]);
 		}
 		*/
-		//getQuestions();
-		//scoreboard=new Scoreboard(players);
-		noPeeking();
+		getQuestions();
+		
+		//noPeeking();
 		//System.out.print(scoreboard.toString());
 
 		/*for(int i=0; i<allQuestions.length; i++){
 			System.out.print("\n"+allQuestions[i]);
 		}*/
+		while(numRound<allQuestions.length){
+			tick();
+		}
 	}
 }

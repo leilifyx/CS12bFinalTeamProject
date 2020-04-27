@@ -50,19 +50,25 @@ public class Question {
 		return question.get(loc);
 	}
 	
-	public void shuffleAnswers(Question question2){
+	public void removeAtLoc(int loc){
+		question.remove(loc);
+	}
+	
+	public Question shuffleAnswers(Question question2){
 		String[] getQues=new String[1];
 		getQues[0]=question2.getQuesAtLoc(0);
 		Question tempQuestion2= new Question(getQues);
 		Random rand= new Random();
 		int numAnswers=question.size()-1;
 		while(numAnswers>0){
-			int random= rand.nextInt(numAnswers);
+			int random= rand.nextInt(numAnswers)+1;
 			String temp= question2.getQuesAtLoc(random);
+			question2.removeAtLoc(random);
 			tempQuestion2.addToEnd(temp);
 			numAnswers--;
 		}
-		question2=tempQuestion2;
+		
+		return tempQuestion2;
 	}
 
 	

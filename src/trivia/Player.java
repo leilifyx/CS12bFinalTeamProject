@@ -32,6 +32,10 @@ public class Player {
 	public void setPoints(int newAmount){
 		points=newAmount;
 	}
+	
+	public void increasePoints(){
+		points+=1;
+	}
 
 	public String toString(){
 		String printed=("\nPlayer name: "+this.name);
