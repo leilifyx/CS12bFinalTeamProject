@@ -131,13 +131,15 @@ public class RunTrivia {
 		
 		System.out.println("\nRound " + (numRound+1)); //prints what Round is on
 		Question toAsk=askQuestion();
-		System.out.println(readyToAsk(toAsk));
-		int[] answers= getEachPersonsAnswer();
+		//System.out.println(readyToAsk(toAsk));
+		String asking=readyToAsk(toAsk);
+		int[] answers= getEachPersonsAnswer(asking);
 		checkAnswers(toAsk, answers);
 		scoreboard=new Scoreboard(players);
 		System.out.println(scoreboard);
 		numRound++;
 	}
+	
 	
 	
 	public static Question askQuestion(){
@@ -157,11 +159,13 @@ public class RunTrivia {
 		return toAsk;
 	}
 	
-	public static int[] getEachPersonsAnswer(){
+	public static int[] getEachPersonsAnswer(String asking){
 		int[] theirAnswers= new int[players.length];
 		for(int i=0; i<players.length; i++){
+			System.out.println(asking);
 			System.out.println(players[i].getName()+", what is your answer?");
 			theirAnswers[i]=scan.nextInt();
+			noPeeking();
 		}
 		return theirAnswers;
 		
@@ -195,15 +199,12 @@ public class RunTrivia {
 		}
 		*/
 		getQuestions();
-		
-		//noPeeking();
-		//System.out.print(scoreboard.toString());
-
 		/*for(int i=0; i<allQuestions.length; i++){
 			System.out.print("\n"+allQuestions[i]);
 		}*/
 		while(numRound<allQuestions.length){
 			tick();
 		}
+		System.out.println("Congrats, you have finished the game");
 	}
 }
