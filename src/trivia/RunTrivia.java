@@ -118,6 +118,7 @@ public class RunTrivia {
 		/*for(int i=0; i<numQuestions; i++){
 			System.out.print(allQuestions[i]);
 		}*/
+		
 	}
 
 	public static void noPeeking(){
@@ -202,6 +203,7 @@ public class RunTrivia {
 		/*for(int i=0; i<allQuestions.length; i++){
 			System.out.print("\n"+allQuestions[i]);
 		}*/
+		noPeeking();
 		while(numRound<allQuestions.length){
 			tick();
 		}
