@@ -7,16 +7,16 @@ public class FinalScoreboard extends Scoreboard {
 		System.out.println("Final score");
 		playerpoints=new int[players.length];
 		playername=new String[players.length];
-		for(int i=0; i<playerpoints; i++){
-			for (int j = i + 1; j < playerpoints; j++){
-					if ( playerpoints[i] >  playerpoints[j])
+		for(int i=0; i<playerpoints.length; i++){
+			for (int j = i + 1; j < playerpoints.length; j++){
+					if ( playerpoints[i] > playerpoints[j])
 					{
-							temp = playerpoints[i];
+							int temp = playerpoints[i];
 							 playerpoints[i] = playerpoints[j];
 							 playerpoints[j] = temp;
 					}
 			}
-		toPrintString = (playerName[i-1] + "Wins!");
+		String toPrintString = (playerName[i-1] + "Wins!");
 		return ;
 
 		}
