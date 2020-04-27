@@ -49,11 +49,11 @@ public class Question {
 	public String getQuesAtLoc(int loc){
 		return question.get(loc);
 	}
-	
+
 	public void removeAtLoc(int loc){
 		question.remove(loc);
 	}
-	
+
 	public Question shuffleAnswers(Question question2){
 		String[] getQues=new String[1];
 		getQues[0]=question2.getQuesAtLoc(0);
@@ -67,11 +67,11 @@ public class Question {
 			tempQuestion2.addToEnd(temp);
 			numAnswers--;
 		}
-		
+
 		return tempQuestion2;
 	}
 
-	
+
 	public void addToEnd(String string){
 		question.add(string);
 	}

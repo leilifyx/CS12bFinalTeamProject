@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Scoreboard {
 	int[] playerpoints;
-	String[] playername; 
+	String[] playername;
 
 	public Scoreboard(Player[] players) {
 		 playerpoints=new int[players.length];
@@ -18,7 +18,7 @@ public class Scoreboard {
 		 }
 
 	}
-	
+
 	public String toString(){
 		String toPrintString="\nScore Board: \n";
 		toPrintString+="\n\tName\tPoints\n";
