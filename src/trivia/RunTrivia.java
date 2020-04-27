@@ -118,7 +118,6 @@ public class RunTrivia {
 		/*for(int i=0; i<numQuestions; i++){
 			System.out.print(allQuestions[i]);
 		}*/
-		
 	}
 
 	public static void noPeeking(){
@@ -128,18 +127,12 @@ public class RunTrivia {
 		}
 	}
 
-	public static void tick() {
-		
-		System.out.println("\nRound " + (numRound+1)); //prints what Round is on
-		Question toAsk=askQuestion();
-		//System.out.println(readyToAsk(toAsk));
-		String asking=readyToAsk(toAsk);
-		int[] answers= getEachPersonsAnswer(asking);
-		checkAnswers(toAsk, answers);
-		scoreboard=new Scoreboard(players);
-		System.out.println(scoreboard);
+	public void tick() {
 		numRound++;
+		System.out.println("\nRound " + numRound); //prints what Round is on
+
 	}
+
 	
 	
 	
@@ -183,22 +176,23 @@ public class RunTrivia {
 	}
 	
 	
-	
+
+
+
 
 	public static void main(String[] args) throws FileNotFoundException{
-		getPlayers();
+		//getPlayers();
 		/*for(int i=0; i<players.length; i++){
 			System.out.print(players[i]);
 		}
 		*/
-		getQuestions();
+		//getQuestions();
+		//scoreboard=new Scoreboard(players);
+		noPeeking();
+		//System.out.print(scoreboard.toString());
+
 		/*for(int i=0; i<allQuestions.length; i++){
 			System.out.print("\n"+allQuestions[i]);
 		}*/
-		noPeeking();
-		while(numRound<allQuestions.length){
-			tick();
-		}
-		System.out.println("Congrats, you have finished the game");
 	}
 }
