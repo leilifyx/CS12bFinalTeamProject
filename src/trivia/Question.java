@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-
-
 public class Question {
 	ArrayList<String> question;
 
@@ -16,6 +14,9 @@ public class Question {
 	 * the following will be wrong answers
 	 */
 	public Question(String[] values) {
+		/*
+		 * constructor, takes in array of Strings, adds them to arraylist
+		 */
 		this.question = new ArrayList<String>();
 		for (int i=0; i<values.length; i++) {
 			question.add(values[i]);
@@ -24,10 +25,16 @@ public class Question {
 	}
 
 	public Question(ArrayList<String> question){
+		/*
+		 * another constructor, this time takes in arraylist
+		 */
 		this.question=question;
 	}
 
 	public String toString(){
+		/*
+		 * prints out questions in format of {question, ..., question}
+		 */
 		String toPrint="{";
 		for (int i=0; i<this.question.size(); i++) {
 			if(i==0){
@@ -43,18 +50,25 @@ public class Question {
 
 
 	public int getSize(){
+		//returns size of arraylist
 		return this.question.size();
 	}
 
 	public String getQuesAtLoc(int loc){
+		//returns String in array list at given location
 		return question.get(loc);
 	}
 	
 	public void removeAtLoc(int loc){
+		//given location, removes from arraylist
 		question.remove(loc);
 	}
 	
 	public Question shuffleAnswers(Question question2){
+		/*
+		 * shuffles answers so right and wrong answers are randomly mixed
+		 * Question stays as fist line
+		 */
 		String[] getQues=new String[1];
 		getQues[0]=question2.getQuesAtLoc(0);
 		Question tempQuestion2= new Question(getQues);
@@ -73,10 +87,12 @@ public class Question {
 
 	
 	public void addToEnd(String string){
+		//adds String to end of arraylist
 		question.add(string);
 	}
 
 	public boolean equals(Question question2){
+		//tests if two Questions are equal
 		boolean isEqual=true;
 		if(question2.getSize()!=this.question.size()){
 			isEqual=false;

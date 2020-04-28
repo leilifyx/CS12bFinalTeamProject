@@ -1,14 +1,20 @@
 package trivia;
 import java.util.HashSet;
 
-
+//extends parent class Scoreboard
 public class FinalScoreboard extends Scoreboard {
 
+	//takes from parent class arrays playerpoints and playername
 	public FinalScoreboard(Player[] players) {
 		super(players);
 	}
 	
+	
 	public static HashSet<String> findWinner(){
+		/*
+		 * findWinner() looks through the players and see which has the highest
+		 * points, it returns a hashset containing these players
+		 */
 		//chose to use HashSet so can have multiple winners listed
 		HashSet<String> winnersSet= new HashSet<String>();
 		int temp1=0;
@@ -29,7 +35,9 @@ public class FinalScoreboard extends Scoreboard {
 		return winnersSet;
 	}
 	
+	
 	public String toString(){
+		//the toString method displays the final winner/winners
 		String toPrint="\nWinner(s) is/are: "+ (findWinner()).toString();
 		return toPrint;
 		
