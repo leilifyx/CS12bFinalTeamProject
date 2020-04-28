@@ -207,6 +207,8 @@ public class RunTrivia {
 		while(numRound<allQuestions.length){
 			tick();
 		}
+		Scoreboard finalScores= new FinalScoreboard(players);
+		System.out.println(finalScores.toString());
 		System.out.println("Congrats, you have finished the game");
 	}
 }

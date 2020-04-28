@@ -2,8 +2,8 @@ package trivia;
 import java.util.Scanner;
 
 public class Scoreboard {
-	int[] playerpoints;
-	String[] playername; 
+	static int[] playerpoints;
+	static String[] playername; 
 
 	public Scoreboard(Player[] players) {
 		 playerpoints=new int[players.length];
