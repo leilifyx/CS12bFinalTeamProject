@@ -11,7 +11,6 @@ public class FinalScoreboard extends Scoreboard {
 	public static HashSet<String> findWinner(){
 		//chose to use HashSet so can have multiple winners listed
 		HashSet<String> winnersSet= new HashSet<String>();
-		String Winner="";
 		int temp1=0;
 		int temp2=0;
 		//finding largest score anyone has
@@ -26,20 +25,7 @@ public class FinalScoreboard extends Scoreboard {
 				winnersSet.add(playername[i]);
 			}
 		}
-		/*
-		for(int i=0; i<playerpoints.length-1; i++){
-			for (int j = i + 1; j < playerpoints.length; j++){
-					if ( playerpoints[i] > playerpoints[j])
-					{
-							int temp = playerpoints[i];
-							 playerpoints[i] = playerpoints[j];
-							 playerpoints[j] = temp;
-					}
-			}
-			Winner = (playername[i-1]);
-		}
-		return Winner;
-		*/
+		
 		return winnersSet;
 	}
 	
