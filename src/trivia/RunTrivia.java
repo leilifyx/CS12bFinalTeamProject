@@ -1,4 +1,5 @@
 package trivia;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
@@ -38,13 +39,20 @@ public class RunTrivia {
 		return players;
 	}
 
-	public static void getQuestions() throws FileNotFoundException{
+	public static void getQuestions() throws FileNotFoundException, InputMismatchException{
 		/*
 		 * getQuestions() gives users the choice to input their own questions or use pre existing ones
 		 * 
 		 */
+		int answer=0;
 		System.out.println("\n\nWould you like to:\n1 - use our questions\n2 - enter your own questions");
-		int answer=scan.nextInt();
+		String tempAns= scan.nextLine();
+		try{
+			 answer=Integer.parseInt(tempAns);
+		}catch(NumberFormatException e){
+			System.out.println("You need to input an integer value");
+			getQuestions();
+		}
 		if(answer==1){
 			getSetQuestions();
 		}
@@ -56,6 +64,7 @@ public class RunTrivia {
 			getQuestions();
 			//by recalling getQuestions() for invalid answers, the prompt just repeats until user gives valid input
 		}
+		
 
 	}
 
@@ -92,7 +101,7 @@ public class RunTrivia {
 		/*
 		 * If the user chooses to use the set questions, they choose the name of the file to be scanned
 		 */
-		String blank=scan.nextLine();
+		
 		File folder= new File("questions");
 		String[] files= folder.list();
 		System.out.println("enter file's name\n\twe currently have:");
