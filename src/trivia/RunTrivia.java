@@ -223,9 +223,17 @@ public class RunTrivia {
 		 */
 		int[] theirAnswers= new int[players.length];
 		for(int i=0; i<players.length; i++){
+			int ansInt=0;
 			System.out.println(asking);
 			System.out.println(players[i].getName()+", what is your answer?");
-			theirAnswers[i]=scan.nextInt();
+			//theirAnswers[i]=scan.nextInt();
+			String tempAnsStr=scan.nextLine();
+			try{
+				 ansInt=Integer.parseInt(tempAnsStr);
+			}catch(NumberFormatException e){
+				System.out.println("No points given for String input");
+			}
+			theirAnswers[i]=ansInt;
 			noPeeking();
 		}
 		return theirAnswers;
