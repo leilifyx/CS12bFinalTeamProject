@@ -1,0 +1,7 @@
+questions.txt questions from https://www.funtrivia.com/playquiz/quiz37732454be8.html
+
+history.txt questions from https://www.washingtontimes.com/quiz/2018/jun/14/can-you-pass-world-history-test/
+
+science.txt questions from https://www.jetpunk.com/quizzes/science-multiple-choice
+
+art.txt questions from https://www.proprofs.com/quiz-school/quizshow.php?title=elements-of-art_4670&q=8
