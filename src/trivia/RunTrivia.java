@@ -28,8 +28,16 @@ public class RunTrivia {
 		 */
 
 		System.out.println("How many people are playing");
-		int numPlaying=scan.nextInt();
-		String blank=scan.nextLine(); //was scanning in extra line
+		int numPlaying=0;
+		String tempNum= scan.nextLine();
+		try{
+			 numPlaying=Integer.parseInt(tempNum);
+		}catch(NumberFormatException e){
+			System.out.println("You need to input an integer value\n");
+			getPlayers();
+		}
+		//int numPlaying=scan.nextInt();
+		
 		players= new Player[numPlaying];
 		for(int i=0; i<numPlaying; i++){
 			System.out.println("Enter name of player"+(i+1)+":");
