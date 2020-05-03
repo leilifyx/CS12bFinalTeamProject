@@ -95,7 +95,6 @@ public class RunTrivia {
 		String blank=scan.nextLine();
 		File folder= new File("questions");
 		String[] files= folder.list();
-		System.out.println(files.length);
 		System.out.println("enter file's name\n\twe currently have:");
 		for(String file : files){
 			if(!file.equals(".DS_Store")){
@@ -103,8 +102,14 @@ public class RunTrivia {
 			}
 		}
 		String fileName=scan.nextLine();
-		File file= new File(fileName);
-		readFile(file);
+		try{
+			File file= new File(fileName);
+			readFile(file);
+		} catch (FileNotFoundException e){
+			System.out.println("could not find this file");
+			getQuestions();
+		}
+		
 	}
 
 	public static void readFile(File file) throws FileNotFoundException{
