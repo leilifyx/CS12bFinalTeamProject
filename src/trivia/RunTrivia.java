@@ -93,7 +93,15 @@ public class RunTrivia {
 		 * If the user chooses to use the set questions, they choose the name of the file to be scanned
 		 */
 		String blank=scan.nextLine();
-		System.out.println("enter file's name\n//we currently have: questions.txt available");
+		File folder= new File("questions");
+		String[] files= folder.list();
+		System.out.println(files.length);
+		System.out.println("enter file's name\n\twe currently have:");
+		for(String file : files){
+			if(!file.equals(".DS_Store")){
+				System.out.println("\t  "+file);
+			}
+		}
 		String fileName=scan.nextLine();
 		File file= new File(fileName);
 		readFile(file);
