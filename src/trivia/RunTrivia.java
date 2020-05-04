@@ -23,21 +23,10 @@ public class RunTrivia {
 
 	public static Player[] getPlayers(){
 		/*
-		 * getPlayers() is a method that asks for user input of how many people are playing
-		 * based on that number it fills the array players with type Player
+		 * based on how many people playing it fills the array players with type Player
 		 */
 
-		System.out.println("How many people are playing");
-		int numPlaying=0;
-		String tempNum= scan.nextLine();
-		try{
-			 numPlaying=Integer.parseInt(tempNum);
-		}catch(NumberFormatException e){
-			System.out.println("You need to input an integer value\n");
-			getPlayers();
-		}
-		//int numPlaying=scan.nextInt();
-		
+		int numPlaying=howManyPlaying();
 		players= new Player[numPlaying];
 		for(int i=0; i<numPlaying; i++){
 			System.out.println("Enter name of player"+(i+1)+":");
@@ -45,6 +34,26 @@ public class RunTrivia {
 			players[i]=new Player(tempNamePlayer);
 		}
 		return players;
+	}
+	
+	//this method asks the user how many people are playing
+	public static int howManyPlaying(){
+		System.out.println("How many people are playing");
+		int numPlaying=0;
+		String tempNum= scan.nextLine();
+		/*
+		 * the purpose of this try/catch and the following ones you see throughout this class
+		 * are to catch cases where user does not input a String, in which case the whole game does
+		 * not end, but rather either the method is recalled in this case, or for when the method is to
+		 * get the user's answers, they will just not be awarded any points
+		 */
+		try{
+			 numPlaying=Integer.parseInt(tempNum);
+		}catch(NumberFormatException e){
+			System.out.println("You need to input an integer value\n");
+			numPlaying=howManyPlaying();
+		}
+		return numPlaying;
 	}
 
 	public static void getQuestions() throws FileNotFoundException, InputMismatchException{
@@ -75,20 +84,52 @@ public class RunTrivia {
 		
 
 	}
+	
+	public static int getNumQues(){
+		 Scanner in=new Scanner(System.in);
+		 System.out.println("How many questions do you want?");
+		 int numQues=0;
+		 String tempNumQues=in.nextLine();
+	    try{
+			 numQues=Integer.parseInt(tempNumQues);
+			 
+		}catch(NumberFormatException e){
+			System.out.println("You need to input an integer value, try again\n");
+			numQues=getNumQues();
+		}
+	    
+	    return numQues;
+		   
+	}
+	
+	
+	public static int getNumChoices(){
+		 Scanner in=new Scanner(System.in);
+		System.out.println("How many answer choices do you want per question?");
+	    int numChoices=0;
+	    String tempNumChoices= in.nextLine();
+		try{
+			 numChoices=Integer.parseInt(tempNumChoices);
+			
+		}catch(NumberFormatException e){
+			System.out.println("You need to input an integer value, try again\n");
+			numChoices=getNumChoices();
+		}
+		
+		return numChoices;
+	}
 
 	public static void getQuestionsFromInput(){
 		/*
 		 * this method allows users to input their own questions, choosing how many questions they want and how many answer choices they'd like to give
 		 */
 	    Scanner in=new Scanner(System.in);
-	    System.out.println("How many questions do you want?");
-	    int numOfQuestions=in.nextInt();
+	    int numOfQuestions=getNumQues();
 	    //Question[] questions=new Question[numOfQuestions];
-	    System.out.println("How many answer choices do you want per question?");
-	    int numOfChoices=in.nextInt();
+	    int numOfChoices=getNumChoices();
 	    allQuestions=new Question[numOfQuestions];
 	    int tracker=0;
-	    String blank=in.nextLine();//was scanning extra line
+	    
 	    while(tracker<numOfQuestions){
 	    	ArrayList<String> tempQuesArrayList= new ArrayList<String>();
 	    	Question tempQuestion=new Question(tempQuesArrayList);
@@ -105,6 +146,7 @@ public class RunTrivia {
 	    }
 	}
 
+	
 	public static void getSetQuestions() throws FileNotFoundException{
 		/*
 		 * If the user chooses to use the set questions, they choose the name of the file to be scanned
@@ -124,7 +166,7 @@ public class RunTrivia {
 			readFile(file);
 		} catch (FileNotFoundException e){
 			System.out.println("could not find this file");
-			getQuestions();
+			getSetQuestions();
 		}
 		
 	}
