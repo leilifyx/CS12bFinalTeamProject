@@ -66,21 +66,22 @@ public class RunTrivia {
 		String tempAns= scan.nextLine();
 		try{
 			 answer=Integer.parseInt(tempAns);
+			 if(answer==1){
+					getSetQuestions();
+				}
+				else if (answer==2){
+					getQuestionsFromInput();
+				}
+				else{
+					System.out.println("invalid answer");
+					getQuestions();
+					//by recalling getQuestions() for invalid answers, the prompt just repeats until user gives valid input
+				}
 		}catch(NumberFormatException e){
 			System.out.println("You need to input an integer value");
 			getQuestions();
 		}
-		if(answer==1){
-			getSetQuestions();
-		}
-		else if (answer==2){
-			getQuestionsFromInput();
-		}
-		else{
-			System.out.println("invalid answer");
-			getQuestions();
-			//by recalling getQuestions() for invalid answers, the prompt just repeats until user gives valid input
-		}
+		
 		
 
 	}
