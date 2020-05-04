@@ -309,6 +309,7 @@ public class RunTrivia {
 	
 
 	public static void main(String[] args) throws FileNotFoundException{
+		System.out.println("Welcome to our trivia game. \nPlease note that no credit will be given to answers in written notation, \ninstead input the corresponding numbers to demonstrate which answer you choose.\n\n");
 		//main method to run trivia game
 		getPlayers();
 		/*
